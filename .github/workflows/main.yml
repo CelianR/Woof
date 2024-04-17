@@ -1,0 +1,11 @@
+name: Rocket
+run-name: 🚀
+on: [push]
+jobs:
+  rocket:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello there, the commit is ${{ github.ref }}"
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: ls
