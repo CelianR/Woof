@@ -1,0 +1,20 @@
+name: Skip tests
+run-name: skip-tests
+on: [push]
+jobs:
+  test-1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello there :wave:"
+  test-2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello there, I'm failing"
+      - run: exit 1
+  test-3-gh-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh repo view CelianR/Woof --json url,createdAt
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      REPO: ${{ github.event.repository.name }}
